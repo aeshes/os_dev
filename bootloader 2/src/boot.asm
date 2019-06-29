@@ -47,8 +47,11 @@ loader:
   mov si, msg
   call print
 
-  cli
-  hlt
+  xor ax, ax  ; Clear ax
+  int 0x12    ; Get the amount of KB from the BIOS
+
+  cli         ; Clear all interrupts
+  hlt         ; Halt the system
 
 times 510 - ($ - $$) db 0
 dw 0xAA55
