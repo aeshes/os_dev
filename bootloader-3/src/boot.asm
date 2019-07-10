@@ -25,20 +25,6 @@ start: jmp loader
   bsVolumeLabel:          DB "MOS FLOPPY "
   bsFileSystem:           DB "FAT12   "
 
-msg db "Welcome to my Operating System!", 0
-
-; Prints a string
-; DS:SI - 0-terminated string
-print:
-  lodsb
-  or al, al     ; al - current character
-  jz print_done ; null-terminator found
-  mov ah, 0x0E
-  int 10h
-  jmp print
-print_done:
-  ret
-
 ; -------------------------
 ; bootloader  entry point
 ; -------------------------
@@ -72,5 +58,22 @@ dw 0xAA55
 
 ;org 0x1000
 
+; Prints a string
+; DS:SI - 0-terminated string
+print:
+  lodsb
+  or al, al     ; al - current character
+  jz print_done ; null-terminator found
+  mov ah, 0x0E
+  int 10h
+  jmp print
+print_done:
+  ret
+
+  mov si, msg
+  call print
+
   cli
   hlt
+
+msg db "Fuck!", 0
