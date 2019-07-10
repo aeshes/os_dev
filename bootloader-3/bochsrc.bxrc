@@ -1,0 +1,7 @@
+megs: 32
+floppya: 1_44=bin/boot.bin, status=inserted
+boot: a
+mouse: enabled=0
+display_library: win32, options="gui_debug"
+romimage: file=$BXSHARE/BIOS-bochs-latest
+vgaromimage: file=$BXSHARE/VGABIOS-lgpl-latest
