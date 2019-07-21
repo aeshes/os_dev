@@ -30,8 +30,7 @@ org 7c00h
 int10_handler:
   call beep
 original_vector:
-  jmp far 0000:0000
-  iret  
+  jmp far 0000:0000 
   
 print:
   lodsb
